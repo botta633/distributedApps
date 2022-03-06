@@ -13,7 +13,7 @@ var (
 	width = uint64(len(write)) + lenWidth
 )
 
-func testStoreAppendRead(t *testing.T) {
+func TestStoreAppendRead(t *testing.T) {
 	f, err := ioutil.TempFile("", "store_append_read_test")
 
 	require.NoError(t, err)
@@ -61,7 +61,6 @@ func testReadAt(t *testing.T, s *store) {
 		b := make([]byte, lenWidth)
 		n, err := s.ReadAt(b, off)
 		require.NoError(t, err)
-		require.Equal(t, write, b)
 		require.Equal(t, int(lenWidth), n)
 		off += int64(n)
 
